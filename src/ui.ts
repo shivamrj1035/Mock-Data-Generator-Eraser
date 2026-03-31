@@ -378,16 +378,8 @@ members [icon: users, color: green] {
   created_at timestamp
 }
 
-kutumb [icon: home, color: purple] {
-  id uuid pk
-  name string
-  origin_place string
-  description string
-  created_at timestamp
-}
-
 users.id < members.created_by_user_id
-kutumb.id < members.primary_kutumb_id\`;
+\`;
 
     schemaEl.value = defaultSchema;
 
