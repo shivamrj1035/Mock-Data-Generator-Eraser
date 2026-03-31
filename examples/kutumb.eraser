@@ -1,0 +1,156 @@
+users [icon: user, color: blue] {
+  id uuid pk
+  email string unique
+  phone string
+  password_hash string
+  status string
+  created_at timestamp
+}
+
+members [icon: users, color: green] {
+  id uuid pk
+  first_name string
+  last_name string
+  gender string
+  dob date
+  is_alive boolean
+  created_by_user_id uuid
+  is_claimed boolean
+  primary_kutumb_id uuid
+  created_at timestamp
+}
+
+kutumb [icon: home, color: purple] {
+  id uuid pk
+  name string
+  origin_place string
+  description string
+  created_at timestamp
+}
+
+categories [icon: layers, color: purple] {
+  id uuid pk
+  kutumb_id uuid
+  name string
+  type string  // REGION, CITY, SUBGROUP, FAMILY_BRANCH
+  parent_id uuid
+  level number
+}
+
+member_category_map [icon: link] {
+  id uuid pk
+  member_id uuid
+  category_id uuid
+  role_id uuid
+}
+
+relationships [icon: git-branch, color: teal] {
+  id uuid pk
+  member_id uuid
+  related_member_id uuid
+  relation_type string  // father, mother, spouse, child, sibling
+  is_bi_directional boolean
+  created_by uuid
+}
+
+marriages [icon: heart, color: pink] {
+  id uuid pk
+  husband_member_id uuid
+  wife_member_id uuid
+  marriage_date date
+  wife_kutumb_id uuid
+  husband_kutumb_id uuid
+}
+
+member_identity_keys [icon: fingerprint, color: orange] {
+  id uuid pk
+  member_id uuid
+  key_type string  // PHONE, EMAIL, NAME_DOB_HASH
+  key_value string
+}
+
+user_member_map [icon: link] {
+  id uuid pk
+  user_id uuid
+  member_id uuid
+  relation_type string
+  is_primary boolean
+}
+
+roles [icon: shield, color: red] {
+  id uuid pk
+  name string  // SUPER_ADMIN, KUTUMB_ADMIN, CATEGORY_ADMIN, MEMBER
+}
+
+member_roles [icon: shield] {
+  id uuid pk
+  member_id uuid
+  role_id uuid
+  scope_type string  // GLOBAL, KUTUMB, CATEGORY
+  scope_id uuid
+}
+
+visibility_rules [icon: eye, color: yellow] {
+  id uuid pk
+  owner_member_id uuid
+  viewer_member_id uuid
+  max_depth number  // 1 = parents, 2 = grandparents
+  allow_descendants boolean
+  allow_ancestors boolean
+}
+
+member_field_permissions [icon: lock, color: yellow] {
+  id uuid pk
+  member_id uuid
+  field_name string  // phone, dob, education
+  visibility string  // PUBLIC, FAMILY, CUSTOM
+}
+
+member_access_overrides [icon: key, color: yellow] {
+  id uuid pk
+  member_id uuid
+  viewer_member_id uuid
+  access_type string  // VIEW, EDIT
+}
+
+member_profiles [icon: file-text] {
+  member_id uuid pk
+  highest_education string
+  profession string
+  company string
+  native_place string
+  current_city string
+  marital_status string
+}
+
+users.id < members.created_by_user_id
+users.id < user_member_map.user_id
+members.id < user_member_map.member_id
+
+kutumb.id < members.primary_kutumb_id
+kutumb.id < categories.kutumb_id
+
+categories.id < categories.parent_id
+categories.id < member_category_map.category_id
+members.id < member_category_map.member_id
+
+members.id < relationships.member_id
+members.id < relationships.related_member_id
+
+members.id < marriages.husband_member_id
+members.id < marriages.wife_member_id
+
+members.id < member_identity_keys.member_id
+
+members.id < member_roles.member_id
+roles.id < member_roles.role_id
+
+members.id < visibility_rules.owner_member_id
+members.id < visibility_rules.viewer_member_id
+
+members.id < member_field_permissions.member_id
+
+members.id < member_access_overrides.member_id
+members.id < member_access_overrides.viewer_member_id
+
+members.id < member_profiles.member_id

@@ -1,0 +1,66 @@
+{
+  "projectName": "family-demo",
+  "generatedAt": "2026-03-31T05:32:11.310Z",
+  "tables": [
+    {
+      "name": "users",
+      "rows": 12
+    },
+    {
+      "name": "kutumb",
+      "rows": 12
+    },
+    {
+      "name": "roles",
+      "rows": 12
+    },
+    {
+      "name": "members",
+      "rows": 12
+    },
+    {
+      "name": "categories",
+      "rows": 12
+    },
+    {
+      "name": "member_category_map",
+      "rows": 12
+    },
+    {
+      "name": "relationships",
+      "rows": 12
+    },
+    {
+      "name": "marriages",
+      "rows": 12
+    },
+    {
+      "name": "member_identity_keys",
+      "rows": 12
+    },
+    {
+      "name": "user_member_map",
+      "rows": 12
+    },
+    {
+      "name": "member_roles",
+      "rows": 12
+    },
+    {
+      "name": "visibility_rules",
+      "rows": 12
+    },
+    {
+      "name": "member_field_permissions",
+      "rows": 12
+    },
+    {
+      "name": "member_access_overrides",
+      "rows": 12
+    },
+    {
+      "name": "member_profiles",
+      "rows": 12
+    }
+  ]
+}

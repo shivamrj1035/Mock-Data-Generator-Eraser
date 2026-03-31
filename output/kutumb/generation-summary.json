@@ -1,0 +1,73 @@
+{
+  "projectName": "kutumb",
+  "generatedAt": "2026-03-31T06:02:08.136Z",
+  "localeProfile": "india",
+  "region": "Gujarat",
+  "columnOverrides": {
+    "members": {
+      "last_name": "Jayswal"
+    }
+  },
+  "tables": [
+    {
+      "name": "users",
+      "rows": 200
+    },
+    {
+      "name": "kutumb",
+      "rows": 200
+    },
+    {
+      "name": "roles",
+      "rows": 200
+    },
+    {
+      "name": "members",
+      "rows": 200
+    },
+    {
+      "name": "categories",
+      "rows": 200
+    },
+    {
+      "name": "member_category_map",
+      "rows": 200
+    },
+    {
+      "name": "relationships",
+      "rows": 200
+    },
+    {
+      "name": "marriages",
+      "rows": 200
+    },
+    {
+      "name": "member_identity_keys",
+      "rows": 200
+    },
+    {
+      "name": "user_member_map",
+      "rows": 200
+    },
+    {
+      "name": "member_roles",
+      "rows": 200
+    },
+    {
+      "name": "visibility_rules",
+      "rows": 200
+    },
+    {
+      "name": "member_field_permissions",
+      "rows": 200
+    },
+    {
+      "name": "member_access_overrides",
+      "rows": 200
+    },
+    {
+      "name": "member_profiles",
+      "rows": 200
+    }
+  ]
+}
